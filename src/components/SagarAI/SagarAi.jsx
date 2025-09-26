@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Sidebar from "../sidebar";
+import Sidebar from "../SideBar/sidebar";
 import { AskBar } from "./ask-bar";
 import { ChatMessage } from "./chat-message";
 import { sendToSagarAI } from "../../services/sagarai";
