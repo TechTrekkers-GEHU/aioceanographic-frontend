@@ -6,6 +6,7 @@ import { PiChartDonut } from 'react-icons/pi';
 import { BsDatabaseGear } from 'react-icons/bs';
 import { GiWaveCrest } from 'react-icons/gi';
 import { RiMenuUnfold4Line } from 'react-icons/ri';
+import { RiMenuUnfold3Line } from 'react-icons/ri';
 
 const Sidebar = ({ activeModule, setActiveModule }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
@@ -27,7 +28,7 @@ const Sidebar = ({ activeModule, setActiveModule }) => {
         onClick={() => setIsCollapsed(!isCollapsed)}
         className="absolute top-4 right-4 w-8 h-8 rounded-lg flex items-center justify-center bg-light-gray hover:bg-seagrass text-dark-gray hover:text-white transition-colors z-50"
       >
-        <RiMenuUnfold4Line className="w-5 h-5" />
+        {isCollapsed?<RiMenuUnfold4Line className="w-5 h-5" />:<RiMenuUnfold3Line className="w-5 h-5 rotate-180" />}
       </button>
 
       {/* Menu Items */}

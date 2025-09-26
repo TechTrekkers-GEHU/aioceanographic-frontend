@@ -1,8 +1,9 @@
 import React from "react";
-import Sidebar from "./components/sidebar";
+
+import SagarAiPage from "./components/SagarAI/SagarAi";
 const App = () =>{
   return (
-    <Sidebar/>
+    <><SagarAiPage/></>
   )
 
 }
