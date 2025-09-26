@@ -1,7 +1,5 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -39,4 +37,66 @@
 
 .read-the-docs {
   color: #888;
+}
+
+
+
+:root {
+  --color-accent: #007bff; 
+  --color-background-light: #f7f9fc; 
+  --color-background-paper: #ffffff; 
+  --color-text-dark: #333333;
+  --color-text-light: #6c757d;
+  --sidebar-width: 256px; 
+}
+
+/* --- Base Body and App Container Styles --- */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background-light);
+  font-family: 'Inter', sans-serif;
+  height: 100vh; 
+  overflow: hidden;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100%; 
+}
+
+.topbar-container { 
+    grid-column: 1 / span 2; 
+}
+.sidebar-container-wrapper { 
+    grid-column: 1; 
+    grid-row: 2; 
+    overflow-y: hidden; 
+}
+.main-content-wrapper { 
+    grid-column: 2; 
+    grid-row: 2; 
+    padding: 2.5rem; 
+    overflow-y: auto; 
+}
+.footer-container { 
+    grid-column: 1 / span 2; 
+    grid-row: 3; 
+}
+
+/* --- Utility Class Helpers for Home.jsx --- */
+.text-marine-blue { color: var(--color-accent); }
+.bg-light-blue { background-color: #e6f0ff; }
+.bg-footer-light { background-color: #eaf3f5; }
+
+
+.wave-icon > svg {
+  animation: wave-motion 2s infinite ease-in-out;
+}
+
+@keyframes wave-motion {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
