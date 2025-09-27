@@ -1,102 +1,33 @@
-#root {
-  margin: 0 auto;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-
 :root {
-  --color-accent: #007bff; 
-  --color-background-light: #f7f9fc; 
-  --color-background-paper: #ffffff; 
-  --color-text-dark: #333333;
-  --color-text-light: #6c757d;
-  --sidebar-width: 256px; 
-}
-
-/* --- Base Body and App Container Styles --- */
-body, html, #root {
-  margin: 0;
-  padding: 0;
-  background-color: var(--color-background-light);
-  font-family: 'Inter', sans-serif;
-  height: 100vh; 
-  overflow: hidden;
+  --sidebar-w: 260px;        /* expanded */
+  --sidebar-w-collapsed: 72px;
 }
 
 .app-container {
   display: grid;
-  grid-template-columns: var(--sidebar-width) 1fr;
   grid-template-rows: auto 1fr auto;
-  height: 100%; 
+  grid-template-columns: var(--sidebar-w) 1fr; /* default expanded */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  transition: grid-template-columns 180ms ease; /* smooth */
 }
 
-.topbar-container { 
-    grid-column: 1 / span 2; 
-}
-.sidebar-container-wrapper { 
-    grid-column: 1; 
-    grid-row: 2; 
-    overflow-y: hidden; 
-}
-.main-content-wrapper { 
-    grid-column: 2; 
-    grid-row: 2; 
-    padding: 2.5rem; 
-    overflow-y: auto; 
-}
-.footer-container { 
-    grid-column: 1 / span 2; 
-    grid-row: 3; 
+/* When collapsed, shrink the first track */
+.app-container.sidebar-collapsed {
+  grid-template-columns: var(--sidebar-w-collapsed) 1fr;
 }
 
-/* --- Utility Class Helpers for Home.jsx --- */
-.text-marine-blue { color: var(--color-accent); }
-.bg-light-blue { background-color: #e6f0ff; }
-.bg-footer-light { background-color: #eaf3f5; }
-
-
-.wave-icon > svg {
-  animation: wave-motion 2s infinite ease-in-out;
+/* Sidebar itself adopts the same width */
+.sidebar-container {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  transition: width 180ms ease;
+}
+.app-container.sidebar-collapsed .sidebar-container {
+  width: var(--sidebar-w-collapsed);
+  min-width: var(--sidebar-w-collapsed);
 }
 
-@keyframes wave-motion {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
+/* Main needs min-width:0 so it can expand/shrink properly */
+main { min-width: 0; }

@@ -1,48 +1,40 @@
-import React from "react";
-import Sidebar from "./components/sidebar";
-import TopBar from "./components/TopBar/TopBar";
-import "./App.css"; 
-import Home from "./components/Home"; 
+"use client"
 
-const Footer = () => {
-  return (
-    <div className="footer-container text-gray-600 bg-footer-light border-t border-gray-300 flex flex-col items-center justify-center py-4">
-        <div className="text-sm">
-            <a href="#api-doc" className="hover:underline text-marine-blue">Api Documentation</a> | <a href="#contacts" className="hover:underline text-marine-blue">Contacts</a>
-        </div>
-        <div className="text-xs mt-1">
-            2025 Tech Trekkers
-        </div>
-    </div>
-  );
-};
+import React from "react"
+import Sidebar from "./components/Sidebar/Sidebar"
+import TopBar from "./components/TopBar/TopBar"
+import SagarAiPage from "./components/SagarAi/SagarAi"
 
-const App = () =>{
-  // State for active module, matching sidebar's required prop
-  const [activeModule, setActiveModule] = React.useState('dashboard');
+import Home from "./components/Home/Home"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { Footer } from "./components/Footer/Footer"
+
+const App = () => {
 
   return (
-    <div className="app-container"> 
-      <div className="topbar-container">
-        <TopBar/> 
+    <Router>
+      <div className="flex flex-col h-screen min-h-screen w-full">
+      <TopBar/>
+    <div className="flex flex-1 min-w-0">
+      <Sidebar />
+    <main className="flex-1 min-w-0 flex flex-col">
+      <div className="mx-auto w-full">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/sagarai" element={<SagarAiPage />} />
+          <Route path="/analysis" element={<div>Analysis Page</div>} />
+          <Route path="/visualization" element={<div>Visualization Page</div>} />
+          <Route path="/data" element={<div>Data Sources Page</div>} />
+          <Route path="/settings" element={<div>Settings Page</div>} />
+          <Route path="*" element={<div>404 Not Found</div>} />
+        </Routes>
+    <Footer />
       </div>
-      
-      <div className="sidebar-container-wrapper">
-        <Sidebar activeModule={activeModule} setActiveModule={setActiveModule} />
-      </div>
-      
-      <div className="main-content-wrapper bg-background-light">
-        {activeModule === 'dashboard' && <Home />}
-        {activeModule !== 'dashboard' && (
-          <div className="text-center p-10 text-gray-500">
-            Content for {activeModule} module coming soon...
-          </div>
-        )}
-      </div>
-
-      <Footer />
-    </div>
+    </main>
+  </div>
+</div>
+    </Router>
   )
-
 }
-export default App;
+export default App
