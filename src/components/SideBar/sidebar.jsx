@@ -11,11 +11,10 @@ import { RiMenuUnfold3Line } from 'react-icons/ri';
 
 const Sidebar = ({ }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
-  const { pathname: rawPath } = useLocation();
-  const pathname = rawPath === '/' ? '/dashboard' : rawPath;
+  const { pathname } = useLocation();
 
   const menuItems = [
-    { id: 'dashboard', icon: LuLayoutDashboard, label: 'Dashboard', description: 'Overview and metrics',path:'/' },
+    { id: 'dashboard', icon: LuLayoutDashboard, label: 'Dashboard', description: 'Overview and metrics',path:'/dashboard' },
     { id: 'SagarAi', icon: GiWaveCrest, label: 'SagarAi', description: 'AI-driven insights',path:'/sagarai' },
     { id: 'analysis', icon: FaRegChartBar, label: 'Analysis', description: 'Data processing and insights',path:'/analysis' },
     { id: 'visualization', icon: PiChartDonut, label: 'Visualization', description: 'Interactive charts and maps',path:'/visualization' },
@@ -35,11 +34,11 @@ const Sidebar = ({ }) => {
       </button>
 
       {/* Menu Items */}
-      <nav className={`p-4 mt-12 ${isCollapsed ? 'flex flex-col items-center' : ''}`}>
+      <nav className={`p-3 mt-12 ${isCollapsed ? 'flex flex-col items-center' : ''}`}>
         <ul className="space-y-1 w-full">
           {menuItems.map(item => {
             const Icon = item.icon;
-            const active = pathname.startsWith(item.path);
+            const active = (item.path === "/dashboard" && pathname === "/") || pathname.startsWith(item.path);
             return (
               <li key={item.id}>
                 <Link
@@ -50,7 +49,7 @@ const Sidebar = ({ }) => {
                       : 'text-dark-gray hover:bg-light-gray hover:text-marine-blue'
                   }`}
                 >
-                  <div className={`flex-shrink-0 w-8 h-8 mt-2 flex items-center justify-center rounded-lg transition-colors ${
+                  <div className={`flex-shrink-0 w-8 h-8 m-1 flex items-center justify-center rounded-lg transition-colors ${
                     active ? 'bg-seagrass text-white' : 'bg-light-gray text-dark-gray group-hover:bg-seagrass group-hover:text-white'
                   }`}>
                     <Icon className="w-5 h-5" />
@@ -60,7 +59,7 @@ const Sidebar = ({ }) => {
                   {!isCollapsed && (
                     <div className="flex-1 min-w-0 whitespace-nowrap overflow-hidden text-ellipsis">
                       <div className="font-medium">{item.label}</div>
-                      <div className="text-xs text-gray-400 truncate">{item.description}</div>
+                      <div className="text-xs truncate">{item.description}</div>
                     </div>
                   )}
                 </Link>
