@@ -1,9 +1,9 @@
 "use client"
 
 import React from "react"
-import Sidebar from "./components/Sidebar/Sidebar"
+import Sidebar from "./components/SideBar/sidebar"
 import TopBar from "./components/TopBar/TopBar"
-import SagarAiPage from "./components/SagarAi/SagarAi"
+import SagarAiPage from "./components/SagarAI/SagarAi"
 
 import Home from "./components/Home/Home"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
