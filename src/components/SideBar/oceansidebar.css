@@ -1,0 +1,106 @@
+.ocean-sidebar {
+  background: #ffffff;
+  height: 100vh;
+  overflow-y: auto;
+  transition: width 0.3s ease;
+  border-right: 1px solid #e5e7eb;
+  font-family: 'Inter', sans-serif;
+}
+
+.ocean-sidebar.open {
+  width: 320px;
+}
+
+.ocean-sidebar.closed {
+  width: 0;
+}
+
+/* Section headers */
+.section {
+  padding: 16px;
+}
+
+.section-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #3e99e9;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e5eaf0;
+}
+
+/* List */
+.ocean-sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ocean-sidebar li {
+  margin-bottom: 10px;
+}
+
+.ocean-sidebar li button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+}
+
+.ocean-sidebar li button:hover {
+  background: #f8fbff;
+}
+
+/* ACTIVE state */
+.ocean-sidebar li button.active {
+  background: #f0f9ff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #3e99e9;
+  padding-left: 10px; /* compensate for border */
+}
+
+/* Item title with icon */
+.item-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #023e73;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Item description */
+.item-description {
+  font-size: 13px;
+  color: #6b7280;
+  margin-left: 50px;
+  margin-top: 2px;
+}
+
+/* Icon box with gradient background */
+.icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2b9cd8, #6ad3cf);
+  color: white;
+  font-size: 18px;
+}
+
+/* Change icon background when active */
+.ocean-sidebar li button.active .icon-box {
+  background: linear-gradient(135deg, #1d7cc1, #4dbdc3);
+}
