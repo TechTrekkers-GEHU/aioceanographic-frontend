@@ -3,6 +3,7 @@ import { AskBar } from "./ask-bar";
 import { ChatMessage } from "./chat-message";
 import { useSagarAI } from "../../api/sagarAI";
 import { useCallback } from "react";
+import { TbProgressX } from 'react-icons/tb';
 
 
 // Connection Fields for SagarAI Services 
@@ -138,12 +139,9 @@ const SagarAiPage = () => {
                   placeholder="Ask Sagar AI"
                 />
                 {status === "in_progress" && (
-                  <button
-                    onClick={handleCancel}
-                    className="text-sm text-red-500 px-3 py-2 border border-red-300 rounded hover:bg-red-50"
-                  >
-                    Cancel
-                  </button>
+                  <TbProgressX onClick={handleCancel}
+                    className="text-4xl hover:text-red-500"
+                  />
                 )}
               </div>
             </div>
