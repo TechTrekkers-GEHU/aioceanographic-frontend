@@ -1,6 +1,7 @@
 .topBar {
     display: flex;
     position: sticky;
+    flex-shrink: 0;
     top: 0;             /* stick to top edge */
     z-index: 1000;
     justify-content: space-between;
