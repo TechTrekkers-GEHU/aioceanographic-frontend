@@ -1,37 +1,40 @@
+"use client"
 
-import React, { useState } from "react";
-import Sidebar from "./components/SideBar/sidebar"; 
-import OceanSidebar from "./components/SideBar/oceansidebar"; 
-import SagarAiPage from "./components/SagarAI/SagarAi";
-import "./App.css";
+import React from "react"
+import Sidebar from "./components/Sidebar/Sidebar"
+import TopBar from "./components/TopBar/TopBar"
+import SagarAiPage from "./components/SagarAi/SagarAi"
+
+import Home from "./components/Home/Home"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { Footer } from "./components/Footer/Footer"
 
 const App = () => {
-  const [activeModule, setActiveModule] = useState("dashboard");
 
   return (
-    <div className="flex h-screen">
-      {/* Main Sidebar */}
-      <Sidebar activeModule={activeModule} setActiveModule={setActiveModule} />
-
-      {/* Ocean Sidebar */}
-      <OceanSidebar isOpen={activeModule === "visualization"} />
-
-      {/* Content Area */}
-      <main className="flex-1 p-6 transition-all duration-300 ml-0">
-        {activeModule === "SagarAi" ? (
-          <SagarAiPage />
-        ) : (
-          <>
-            <h1 className="text-2xl font-bold">{activeModule.toUpperCase()} Page</h1>
-            <p className="mt-4 text-gray-600">
-              This is the content area for {activeModule}.
-            </p>
-          </>
-        )}
-      </main>
-    </div>
-  );
-};
-
-export default App;
-
+    <Router>
+      <div className="flex flex-col h-screen min-h-screen w-full">
+      <TopBar/>
+    <div className="flex flex-1 min-w-0">
+      <Sidebar />
+    <main className="flex-1 min-w-0 flex flex-col">
+      <div className="mx-auto w-full">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Home />} />
+          <Route path="/sagarai" element={<SagarAiPage />} />
+          <Route path="/analysis" element={<div>Analysis Page</div>} />
+          <Route path="/visualization" element={<div>Visualization Page</div>} />
+          <Route path="/data" element={<div>Data Sources Page</div>} />
+          <Route path="/settings" element={<div>Settings Page</div>} />
+          <Route path="*" element={<div>404 Not Found</div>} />
+        </Routes>
+    <Footer />
+      </div>
+    </main>
+  </div>
+</div>
+    </Router>
+  )
+}
+export default App

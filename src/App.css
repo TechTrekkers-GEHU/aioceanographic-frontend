@@ -1,46 +1,33 @@
-#root {
-  width: 100%;
+:root {
+  --sidebar-w: 260px;        /* expanded */
+  --sidebar-w-collapsed: 72px;
+}
+
+.app-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: var(--sidebar-w) 1fr; /* default expanded */
   height: 100vh;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  background: #f9fcff;
-  font-family: Arial, sans-serif;
+  width: 100vw;
   overflow: hidden;
+  transition: grid-template-columns 180ms ease; /* smooth */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* When collapsed, shrink the first track */
+.app-container.sidebar-collapsed {
+  grid-template-columns: var(--sidebar-w-collapsed) 1fr;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Sidebar itself adopts the same width */
+.sidebar-container {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  transition: width 180ms ease;
+}
+.app-container.sidebar-collapsed .sidebar-container {
+  width: var(--sidebar-w-collapsed);
+  min-width: var(--sidebar-w-collapsed);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+/* Main needs min-width:0 so it can expand/shrink properly */
+main { min-width: 0; }
