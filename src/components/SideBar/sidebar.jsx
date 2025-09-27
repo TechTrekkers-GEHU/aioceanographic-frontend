@@ -6,6 +6,7 @@ import { PiChartDonut } from 'react-icons/pi';
 import { BsDatabaseGear } from 'react-icons/bs';
 import { GiWaveCrest } from 'react-icons/gi';
 import { RiMenuUnfold4Line } from 'react-icons/ri';
+import { RiMenuUnfold3Line } from 'react-icons/ri';
 
 const Sidebar = ({ activeModule, setActiveModule }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
@@ -25,9 +26,9 @@ const Sidebar = ({ activeModule, setActiveModule }) => {
       {/* Collapse/Expand Button */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
-        className="absolute top-4 right-4 w-8 h-8 rounded-lg flex items-center justify-center bg-light-gray hover:bg-seagrass text-dark-gray hover:text-white transition-colors z-50"
+        className="absolute fix-4 top-4 left-6 w-8 h-8 rounded-lg flex items-center justify-center bg-light-gray hover:bg-seagrass text-dark-gray hover:text-white transition-colors z-50"
       >
-        <RiMenuUnfold4Line className="w-5 h-5" />
+        {isCollapsed?<RiMenuUnfold4Line className="w-5 h-5" />:<RiMenuUnfold3Line className="w-5 h-5 rotate-180" />}
       </button>
 
       {/* Menu Items */}
@@ -45,7 +46,7 @@ const Sidebar = ({ activeModule, setActiveModule }) => {
                       : 'text-dark-gray hover:bg-light-gray hover:text-marine-blue'
                   }`}
                 >
-                  <div className={`w-8 h-8 flex items-center justify-center rounded-lg transition-colors ${
+                  <div className={`flex-shrink-0 w-8 h-8 mt-2 flex items-center justify-center rounded-lg transition-colors ${
                     activeModule === item.id ? 'bg-seagrass text-white' : 'bg-light-gray text-dark-gray group-hover:bg-seagrass group-hover:text-white'
                   }`}>
                     <Icon className="w-5 h-5" />
@@ -53,7 +54,7 @@ const Sidebar = ({ activeModule, setActiveModule }) => {
 
                   {/* Only show text if expanded */}
                   {!isCollapsed && (
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0 whitespace-nowrap overflow-hidden text-ellipsis">
                       <div className="font-medium">{item.label}</div>
                       <div className="text-xs text-gray-400 truncate">{item.description}</div>
                     </div>
