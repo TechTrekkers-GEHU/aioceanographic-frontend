@@ -1,6 +1,10 @@
 import { cn } from "../../utils/cn"
+import Lottie from 'lottie-react'
+import sagarAIWorking from '../../assets/sagarAI/sagarAIWorkingPromptIcon.json';
+import sagarAIDone from '../../assets/sagarAI/sagarAIDonePromptIcon.png';
+//import sagarAIIntrupted from '../../assets/sagarAI/sagarAIIntruptedPromptIcon.png';
 
-export default function ChatMessage({ role, content }) {
+export default function ChatMessage({ role, content}) {
   // message, role,content are supported
   const props = arguments[0] || {}
   const message = props.message
@@ -23,6 +27,17 @@ export default function ChatMessage({ role, content }) {
   const isUser = derivedRole === "user"
   return (
     <div className={cn("w-full flex mb-8", isUser ? "justify-end" : "justify-start")}>
+      
+      {!isUser && (
+        !message.done ? (
+          <Lottie loop animationData={sagarAIWorking} 
+          play style={{ width: 80, height: 80,objectFit: "cover",overflow: "hidden", transform: "scale(1.5)",
+                        transformOrigin: "center", clipPath: "inset(10% 10% 10% 10%)" }}
+          />
+        ) : (<img src= {sagarAIDone} className="w-[60px] h-[60px] object-contain" />)
+      )}
+
+
       <div
         className={cn(
           "max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
