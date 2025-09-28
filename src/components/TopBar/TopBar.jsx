@@ -27,8 +27,10 @@ const TopBar = () => {
                 </div>
                 <span className={styles.name}>TextTwistker</span>
             </div>
-
-            <SearchBox />
+            
+            <div className={styles.align}>
+                <SearchBox />
+            </div>
 
             <ProfileAvatar name="Research Team" />
         </nav>

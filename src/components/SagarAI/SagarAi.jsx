@@ -66,23 +66,15 @@ const SagarAiPage = () => {
           const chats = [...prevChat];
           const lastIndex = chats.length - 1;
 
-          // Handing Exceptions Check if Message Component is available and it is System Type
           if (lastIndex >= 0 && chats[lastIndex].role === "system") {
-            // message.message is token from Parsed JSON Object
-            // Appending Tokens to message as it comes in stream 
             const updatedMessage = {
               ...chats[lastIndex],content: chats[lastIndex].content + message.message,
             };
-
-            // Set Message to Updated Message after Appending
             chats[lastIndex] = updatedMessage;
           }
+          
           return chats;
         });
-          // Streaming tokens
-        if (autoScroll && !userScrolledUp){
-          queueMicrotask(() => scrollToBottom("auto"));
-        }
 
         // On response completion
         if (autoScroll && !userScrolledUp){
@@ -93,17 +85,24 @@ const SagarAiPage = () => {
 
       // Response completed then Allow Input for other prompts
       if (message.type === "done") {
-        console.log("Done");
+        setMessages((prevChat) => {
+          const chats = [...prevChat];
+          const lastIndex = chats.length - 1;
+          if (lastIndex >= 0 && chats[lastIndex].role === "system") {
+            chats[lastIndex] = {
+            ...chats[lastIndex],
+            done: true, // ✅ highlight: mark message as complete
+            };
+          }
+          return chats;
+        });
+        
         setStatus("idle");
-        // Streaming tokens
-      if (autoScroll && !userScrolledUp){
-        queueMicrotask(() => scrollToBottom("auto"));
-      }
 
-      // On response completion
-      if (autoScroll && !userScrolledUp){
-        queueMicrotask(() => scrollToBottom("smooth"));
-      }
+        // On response completion
+        if (autoScroll && !userScrolledUp){
+          queueMicrotask(() => scrollToBottom("smooth"));
+        }
 
       }
     },
@@ -175,9 +174,9 @@ const SagarAiPage = () => {
         ) : (
           <>
             <section ref={listRef} className="flex-1 border-l border-gray-300 border-border mx-2 overflow-y-auto px-4" aria-label="Chat history" role="log">
-              <div className="mx-auto w-full max-w-3xl py-6 flex flex-col gap-4">
+              <div className="mx-auto w-full max-w-[50rem] py-6 flex flex-col gap-4">
                 {messages.map((m) => (
-                  <ChatMessage key={m.id} message={m} />
+                  <ChatMessage key={m.id} message={m}/>
                 ))}
                 <div className="h-10 w-full" /> {/*Sudo Component for managing overlap b/w chats & input box in footer */}
                 <div ref={endRef}  />
