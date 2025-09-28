@@ -5,19 +5,24 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from "react-route
 
 import Sidebar from "./components/SideBar/sidebar";
 import OceanSidebar from "./components/SideBar/oceansidebar"; 
+import AnalysisSideBar from "./components/SideBar/analysisSideBar"; 
 import TopBar from "./components/TopBar/TopBar";
 import Home from "./components/Home/Home";
 import SagarAiPage from "./components/SagarAI/SagarAi";
 import Visualization from "./components/Visualization/Visualization"; 
 import DataSources from "./components/DataSource/datasources";
 import SettingsPage from "./components/Setting/settings";
+import Analysis from "./components/Analysis/Analysis"
 import { Footer } from "./components/Footer/Footer";
 
 const AppShell = () => {
   const { pathname } = useLocation();
   const isVisualizationPage = pathname.toLowerCase().startsWith("/visualization");
+  const isAnalysisPage = pathname.toLowerCase().startsWith("/analysis");
+
 
   const [activeVizId, setActiveVizId] = useState("param");
+  const [activeAnalysisId, setActiveAnalysisId] = useState("multivarentCrossDomain");
 
   const hideFooter = ["/sagarai", "/visualization"].some(path =>
     pathname.toLowerCase().startsWith(path)
@@ -40,7 +45,13 @@ const AppShell = () => {
         <div className="flex flex-1 min-h-0">
           {isVisualizationPage && (
             <div className="shrink-0 h-[calc(100vh-4rem)] bg-white">
-              <OceanSidebar activeItem={activeVizId} onSelect={setActiveVizId} />
+              <OceanSidebar activeItem={activeAnalysisId} onSelect={setActiveAnalysisId} />
+            </div>
+          )}
+
+          {isAnalysisPage && (
+            <div className="shrink-0 h-[calc(100vh-4rem)] bg-white">
+              <AnalysisSideBar activeItem={activeVizId} onSelect={setActiveVizId} />
             </div>
           )}
 
@@ -50,10 +61,14 @@ const AppShell = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Home />} />
                 <Route path="/sagarai" element={<SagarAiPage />} />
-                <Route path="/analysis" element={<div>Analysis Page</div>} />
-
+                
+                <Route 
+                path="/analysis" 
+                element={<Analysis activeAnalysisId={activeAnalysisId}/>} 
+                />
                 <Route
-                  path="/visualization"
+                
+                path="/visualization"
                   element={<Visualization activeVizId={activeVizId} />}
                 />
 
