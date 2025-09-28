@@ -1,5 +1,5 @@
-# Use Node.js base image
-FROM node:22-alpine
+# Use Node.js-Debian base image
+FROM node:22
 
 WORKDIR /app
 
