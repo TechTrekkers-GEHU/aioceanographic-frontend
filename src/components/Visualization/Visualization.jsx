@@ -3,6 +3,7 @@ import { cn } from "../../utils/cn";
 import { fetchParameterCorrelationsData } from "../../services/visualizationengine";
 import ParameterCorrelations from "./ParameterCorrelations";
 import StatCard from "./StatCard";
+import BiodiversityHotspots from './BiodiversityHotspot';
 
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from 'recharts';
 import { FiDownload, FiSave } from 'react-icons/fi';
@@ -106,7 +107,7 @@ const Visualization = ({ activeVizId = 'param' }) => {
       }
     };
 
-    if (activeVizId === 'param' || activeVizId === 'biodiversity') {
+    if (activeVizId === 'param' || activeVizId === 'biodiversity' || activeVizId === 'hotspots') {
       loadData();
     }
   }, [activeVizId]);
@@ -169,6 +170,8 @@ const Visualization = ({ activeVizId = 'param' }) => {
             </div>
           </div>
         );
+      case 'hotspots':
+        return <BiodiversityHotspots />;
       
       default:
         return <div className="text-xl text-gray-500 p-6">Select a visualization from the sidebar to begin.</div>;
