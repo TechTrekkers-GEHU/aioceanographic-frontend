@@ -91,7 +91,7 @@ const SagarAiPage = () => {
           if (lastIndex >= 0 && chats[lastIndex].role === "system") {
             chats[lastIndex] = {
             ...chats[lastIndex],
-            done: true, // ✅ highlight: mark message as complete
+            messageStatus: "done",
             };
           }
           return chats;
@@ -145,6 +145,20 @@ const SagarAiPage = () => {
   // Cancel current prompt in between using cancell button in UI
   function handleCancel() {
     messageVersion.current += 1;
+
+    setMessages((prevChat) => {
+      const chats = [...prevChat];
+      const lastIndex = chats.length - 1;
+      if (lastIndex >= 0 && chats[lastIndex].role === "system") {
+        chats[lastIndex] = {
+        ...chats[lastIndex],
+        content: chats[lastIndex].content + "\n\n [Prompt Terminated By User]",
+        messageStatus: "intreputed",
+        };
+      }
+      return chats;
+    });
+
     setStatus("idle");
   }
 

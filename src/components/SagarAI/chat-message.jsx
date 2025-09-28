@@ -2,7 +2,7 @@ import { cn } from "../../utils/cn"
 import Lottie from 'lottie-react'
 import sagarAIWorking from '../../assets/sagarAI/sagarAIWorkingPromptIcon.json';
 import sagarAIDone from '../../assets/sagarAI/sagarAIDonePromptIcon.png';
-//import sagarAIIntrupted from '../../assets/sagarAI/sagarAIIntruptedPromptIcon.png';
+import sagarAIIntreputed from '../../assets/sagarAI/sagarAIIntruptedPromptIcon.png';
 
 export default function ChatMessage({ role, content}) {
   // message, role,content are supported
@@ -27,16 +27,18 @@ export default function ChatMessage({ role, content}) {
   const isUser = derivedRole === "user"
   return (
     <div className={cn("w-full flex mb-8", isUser ? "justify-end" : "justify-start")}>
-      
-      {!isUser && (
-        !message.done ? (
+      <>
+        {!isUser && message.messageStatus === 'done' ? (
+          <img src= {sagarAIDone} className="w-[60px] h-[60px] object-contain" />
+        ) : !isUser && message.messageStatus === 'intreputed' ? (
+          <img src= {sagarAIIntreputed} className="w-[60px] h-[60px] object-contain" />
+        ) : !isUser ?(
           <Lottie loop animationData={sagarAIWorking} 
           play style={{ width: 80, height: 80,objectFit: "cover",overflow: "hidden", transform: "scale(1.5)",
                         transformOrigin: "center", clipPath: "inset(10% 10% 10% 10%)" }}
           />
-        ) : (<img src= {sagarAIDone} className="w-[60px] h-[60px] object-contain" />)
-      )}
-
+        ):(<></>)}
+      </>
 
       <div
         className={cn(
@@ -44,6 +46,7 @@ export default function ChatMessage({ role, content}) {
           isUser ? "bg-gray-200 text-gray-800 ml-auto rounded-bl-2xl rounded-tl-2xl rounded-br-2xl rounded-tr" : "bg-muted text-foreground",
         )}
         aria-label={isUser ? "User message" : "Assistant message"}
+        style={{ whiteSpace: "pre-line" }}
       >
         {text}
       </div>
