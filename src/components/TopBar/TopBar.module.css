@@ -2,7 +2,7 @@
     display: flex;
     position: sticky;
     flex-shrink: 0;
-    top: 0;             /* stick to top edge */
+    top: 0;
     z-index: 1000;
     justify-content: space-between;
     align-items: center;
@@ -50,4 +50,37 @@
     display: flex;
     align-items: flex-start;
     padding-top: 4px;
+}
+
+.profileWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.profileName {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #3381AA;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+}
+
+.avatar:hover {
+    background-color: #005fa3;
 }

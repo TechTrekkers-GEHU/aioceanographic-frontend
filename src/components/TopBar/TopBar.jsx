@@ -1,6 +1,22 @@
 import React from 'react';
 import styles from './TopBar.module.css';
+import { SearchBox } from './SearchBar';
 import { LuWaves } from 'react-icons/lu';
+
+const ProfileAvatar = ({ name = "Guest" }) => {
+    const initials = name
+        .split(" ")
+        .map(word => word[0]?.toUpperCase())
+        .slice(0, 2)
+        .join("");
+
+    return (
+        <div className={styles.profileWrapper}>
+            <span className={styles.profileName}>{name}</span>
+            <div className={styles.avatar}>{initials || "?"}</div>
+        </div>
+    );
+};
 
 const TopBar = () => {
     return (
@@ -12,14 +28,11 @@ const TopBar = () => {
                 <span className={styles.name}>TextTwistker</span>
             </div>
 
-            <div className={styles.section}></div>
+            <SearchBox />
 
-            <div className={styles.section}>
-                <button className={styles.linkButton}>Login</button>
-                <button className={styles.linkButton}>Help</button>
-            </div>
+            <ProfileAvatar name="Research Team" />
         </nav>
-    )
-}
+    );
+};
 
 export default TopBar;
