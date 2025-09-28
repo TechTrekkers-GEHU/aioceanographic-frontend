@@ -175,15 +175,14 @@ const SagarAiPage = () => {
         ) : (
           <>
             <section ref={listRef} className="flex-1 border-l border-gray-300 border-border mx-2 overflow-y-auto px-4" aria-label="Chat history" role="log">
-              <div className="mx-auto w-full max-w-2xl py-6 flex flex-col gap-4">
+              <div className="mx-auto w-full max-w-3xl py-6 flex flex-col gap-4">
                 {messages.map((m) => (
                   <ChatMessage key={m.id} message={m} />
                 ))}
+                <div className="h-10 w-full" /> {/*Sudo Component for managing overlap b/w chats & input box in footer */}
                 <div ref={endRef}  />
               </div>
-              
             </section>
-
             <div className="sticky bottom-0 inset-x-0 border-t border-t-gray-300 mx-2 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
               <div className="mx-auto w-full max-w-2xl px-4 py-4 flex gap-2 items-center">
                 <AskBar

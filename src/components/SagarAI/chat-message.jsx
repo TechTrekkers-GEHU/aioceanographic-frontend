@@ -22,11 +22,11 @@ export default function ChatMessage({ role, content }) {
 
   const isUser = derivedRole === "user"
   return (
-    <div className={cn("w-full flex mb-20", isUser ? "justify-end" : "justify-start")}>
+    <div className={cn("w-full flex mb-8", isUser ? "justify-end" : "justify-start")}>
       <div
         className={cn(
           "max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
-          isUser ? "bg-primary text-primary-foreground" : "bg-muted text-foreground",
+          isUser ? "bg-gray-200 text-gray-800 ml-auto rounded-bl-2xl rounded-tl-2xl rounded-br-2xl rounded-tr" : "bg-muted text-foreground",
         )}
         aria-label={isUser ? "User message" : "Assistant message"}
       >
