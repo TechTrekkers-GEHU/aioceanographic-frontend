@@ -4,17 +4,14 @@ import { fetchParameterCorrelationsData } from "../../services/visualizationengi
 import ParameterCorrelations from "./ParameterCorrelations";
 import StatCard from "./StatCard";
 
-// Imports for the AreaChart components
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from 'recharts';
-import { FiDownload, FiSave } from 'react-icons/fi'; // 1. ADDED THIS IMPORT
+import { FiDownload, FiSave } from 'react-icons/fi';
 
-// Import the new component and its styles
 import DataSourceConfig from "./DataSourceConfig";
 import './DataSourceConfig.css';
 
 
-const OceanStatChart = ({ data, color, unit, title }) => {
-  
+const OceanStatChart = ({ data, color, unit, title, decimalPlaces = 1 }) => {
   if (!data || data.length === 0) return <div className="h-full flex items-center justify-center text-gray-400">No data available</div>;
 
   const maxVal = Math.max(...data.map(d => d.value));
@@ -28,7 +25,7 @@ const OceanStatChart = ({ data, color, unit, title }) => {
     <ResponsiveContainer width="100%" height="100%">
       <AreaChart
         data={data}
-        margin={{ top: 10, right: 10, left: -25, bottom: 5 }}
+        margin={{ top: 10, right: 10, left: 0, bottom: 5 }}
       >
         <defs>
           <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
@@ -40,7 +37,7 @@ const OceanStatChart = ({ data, color, unit, title }) => {
         <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
 
         <Tooltip
-          formatter={(value) => [`${value} ${unit}`]}
+          formatter={(value) => [`${Number(value).toFixed(decimalPlaces)} ${unit}`]}
           labelFormatter={(label) => `Month: ${label}`}
           contentStyle={{ backgroundColor: 'white', border: '1px solid #ccc', borderRadius: '5px' }}
         />
@@ -81,6 +78,7 @@ const OceanStatChart = ({ data, color, unit, title }) => {
           fontSize={10}
           orientation="left"
           width={40}
+          tickFormatter={(tick) => tick.toFixed(decimalPlaces)}
         />
       </AreaChart>
     </ResponsiveContainer>
@@ -129,10 +127,8 @@ const Visualization = ({ activeVizId = 'param' }) => {
       case 'biodiversity':
         return (
           <div className="space-y-6 w-full">
-           
             <DataSourceConfig />
 
-          
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold text-gray-700">Parameter Correlations</h2>
               <div className="flex items-center gap-3">
@@ -147,7 +143,6 @@ const Visualization = ({ activeVizId = 'param' }) => {
               </div>
             </div>
 
-           
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {stats.map((stat) => (
                 <StatCard
@@ -162,12 +157,13 @@ const Visualization = ({ activeVizId = 'param' }) => {
                     title={stat.title.split(' ')[0]}
                     unit={stat.unit}
                     color={stat.id === 'temp' ? '#F66F6A' : stat.id === 'salinity' ? '#3E99E9' : '#6AD3CF'}
+                    
+                    decimalPlaces={stat.id === 'ph' ? 2 : 1}
                   />
                 </StatCard>
               ))}
             </div>
 
-            {/* Correlation Chart */}
             <div className="bg-white p-6 rounded-xl shadow-lg min-h-[400px]">
               <ParameterCorrelations data={correlationData} />
             </div>
