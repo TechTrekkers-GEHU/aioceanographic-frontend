@@ -1,6 +1,6 @@
 .ocean-sidebar {
   background: #ffffff;
-  height: 100vh;
+  height: 100%; 
   overflow-y: auto;
   transition: width 0.3s ease;
   border-right: 1px solid #e5e7eb;
@@ -61,12 +61,12 @@
   background: #f8fbff;
 }
 
-/* ACTIVE state */
+
 .ocean-sidebar li button.active {
   background: #f0f9ff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   border-left: 4px solid #3e99e9;
-  padding-left: 10px; /* compensate for border */
+  padding-left: 10px; 
 }
 
 /* Item title with icon */
@@ -95,12 +95,26 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #2b9cd8, #6ad3cf);
+  background: #118d80;
   color: white;
   font-size: 18px;
 }
 
-/* Change icon background when active */
+
 .ocean-sidebar li button.active .icon-box {
-  background: linear-gradient(135deg, #1d7cc1, #4dbdc3);
+  background: #118d80; 
+}
+
+/*scrollbar*/
+.ocean-sidebar::-webkit-scrollbar {
+  width: 6px; 
+}
+
+.ocean-sidebar::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.ocean-sidebar::-webkit-scrollbar-thumb {
+  background-color: #e5e7eb; 
+  border-radius: 10px;     
 }
