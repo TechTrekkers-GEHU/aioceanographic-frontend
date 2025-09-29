@@ -2,13 +2,20 @@ import React from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Placeholder data for hotspots - replace with real data later
+// Placeholder data for hotspots - will replace with real data later
 const hotspots = [
-  { id: 1, name: 'Great Barrier Reef', lat: -18.2871, lng: 147.6992, score: 0.9 },
-  { id: 2, name: 'Coral Triangle', lat: -2.8991, lng: 120.9359, score: 0.95 },
-  { id: 3, name: 'Galapagos Islands', lat: -0.9538, lng: -90.9656, score: 0.85 },
-  { id: 4, name: 'Caribbean Sea', lat: 15.7835, lng: -78.7837, score: 0.8 }
+  { id: 1, name: 'Andaman & Nicobar Islands', lat: 12.61, lng: 92.83, score: 0.9 },
+  { id: 2, name: 'Sunderbans', lat:  21.95, lng:  89.17, score: 0.95 },
+  { id: 3, name: 'Live Coral Cover', lat: 9.9372, lng: 75.5525, score: 0.85 },
+  { id: 4, name: 'Caribbean Sea', lat: 13.7000, lng: 72.1833, score: 0.6 },
+  { id: 5, name: 'Goa Coastal Corals', lat: 15.3522, lng: 73.7782, score: 0.79 }
 ];
+
+// [latitude, longitude] for setting frame bounds
+const northEast    = [30.162, 102.0201];
+const southWest    = [0.368, 56.914];
+const customBounds = [southWest, northEast]
+
 
 const BiodiversityHotspots = () => {
   return (
@@ -20,10 +27,13 @@ const BiodiversityHotspots = () => {
       <div className="bg-white p-6 rounded-xl shadow-lg flex-1 h-[calc(100vh-12rem)]">
         <div className="w-full h-full rounded-lg overflow-hidden">
           <MapContainer
-            center={[0, 0]}
-            zoom={2}
-            className="w-full h-full"
-          >
+          bounds={customBounds}
+          maxBounds={customBounds}
+          maxBoundsViscosity={1.0}
+          minZoom={5}
+          maxZoom={8}
+          className="w-full h-full"
+        >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
