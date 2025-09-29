@@ -45,13 +45,13 @@ const AppShell = () => {
         <div className="flex flex-1 min-h-0">
           {isVisualizationPage && (
             <div className="shrink-0 h-[calc(100vh-4rem)] bg-white">
-              <OceanSidebar activeItem={activeAnalysisId} onSelect={setActiveAnalysisId} />
+              <OceanSidebar activeItem={activeVizId} onSelect={setActiveVizId} />
             </div>
           )}
 
           {isAnalysisPage && (
             <div className="shrink-0 h-[calc(100vh-4rem)] bg-white">
-              <AnalysisSideBar activeItem={activeVizId} onSelect={setActiveVizId} />
+              <AnalysisSideBar activeItem={activeAnalysisId} onSelect={setActiveAnalysisId} />
             </div>
           )}
 
