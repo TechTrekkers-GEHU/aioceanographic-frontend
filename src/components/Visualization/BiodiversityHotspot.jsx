@@ -67,7 +67,7 @@ const BiodiversityHotspots = () => {
       url: "https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
       attribution: "Ocean Basemap © Esri",
       maxZoom: 18,
-      overlayUrl: "https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png", // optional overlay
+      overlayUrl: "https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png",
       overlayAttribution: "© OpenSeaMap contributors",
   },
 };
