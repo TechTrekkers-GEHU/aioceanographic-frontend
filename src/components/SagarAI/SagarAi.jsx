@@ -173,9 +173,9 @@ const SagarAiPage = () => {
         {messages.length === 0 ? (
           <section className="flex flex-1 items-center justify-center px-4">
             <div className="mx-auto w-full max-w-2xl text-center">
-              <h1 className="text-pretty text-4xl font-semibold text-primary text-cyan-azure">Hello, Vineet</h1>
+              <h1 className="text-pretty text-4xl font-semibold text-primary text-cyan-azure">Hello, User</h1>
               <p className="mt-2 text-m text-muted-foreground text-dark-gray">
-                Hello! Ready to explore the depths? From sensor data to climate trends, ask away!
+                Ready to explore the depths? From data to insights, ask away!
               </p>
               <AskBar
                 className="mt-10"
