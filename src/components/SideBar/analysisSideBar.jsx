@@ -16,7 +16,7 @@ const OceanSidebar = ({ activeItem, onSelect }) => {
       <div>
         <div className="section">
           <h3 className="section-title">
-            <LuActivity /> Coreleational Analysisd
+            <LuActivity /> Correlational Analysis
           </h3>
           <ul>
             <li>
