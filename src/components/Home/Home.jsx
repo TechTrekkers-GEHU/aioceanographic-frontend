@@ -250,19 +250,14 @@ const Home = () => {
 
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-4">
         <DomainProgress />
-        <CorrelationChart />
+        {/* ===== Research Projects Tracker ===== */}
+        <div className="bg-white shadow-md rounded-2xl p-4 h-64 w-full">
+          <h3 className="text-lg font-semibold text-gray-700 mb-1">
+            Research Projects / Experiments Tracker
+          </h3>
+          <p className="text-sm text-gray-400">(Coming Soon)</p>
+        </div>
       </section>
-
-      {/* ===== Research Projects Tracker ===== */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-4">
-  <div className="bg-white shadow-md rounded-2xl p-4 h-64 w-full">
-    <h3 className="text-lg font-semibold text-gray-700 mb-1">
-      Research Projects / Experiments Tracker
-    </h3>
-    <p className="text-sm text-gray-400">(Coming Soon)</p>
-  </div>
-</section>
-
 
       {/* ===== User Progress + Analysis Results ===== */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
