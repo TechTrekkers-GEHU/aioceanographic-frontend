@@ -8,7 +8,9 @@ import OceanSidebar from "./components/SideBar/oceansidebar";
 import TopBar from "./components/TopBar/TopBar";
 import Home from "./components/Home/Home";
 import SagarAiPage from "./components/SagarAI/SagarAi";
+import AnalysisSideBar from "./components/SideBar/analysisSideBar";
 import Visualization from "./components/Visualization/Visualization"; 
+import Analysis from "./components/Analysis/Analysis"
 import DataSources from "./components/DataSource/datasources";
 import SettingsPage from "./components/Setting/settings";
 import { Footer } from "./components/Footer/Footer";
@@ -17,8 +19,10 @@ import LandingPage from "./components/LandingPage/LandingPage";
 const AppShell = () => {
   const { pathname } = useLocation();
   const isVisualizationPage = pathname.toLowerCase().startsWith("/visualization");
+  const isAnalysisPage = pathname.toLowerCase().startsWith("/analysis");
 
   const [activeVizId, setActiveVizId] = useState("param");
+  const [activeAnalysisId, setActiveAnalysisId] = useState("multivarentCrossDomain");
 
   const hideFooter = ["/sagarai", "/visualization"].some(path =>
     pathname.toLowerCase().startsWith(path)
@@ -45,12 +49,22 @@ const AppShell = () => {
             </div>
           )}
 
+          {isAnalysisPage && (
+            <div className="shrink-0 h-[calc(100vh-4rem)] bg-white">
+              <AnalysisSideBar activeItem={activeAnalysisId} onSelect={setActiveAnalysisId} />
+            </div>
+          )}
+
           <main className="flex-1 min-w-0 flex flex-col overflow-y-auto">
             <div className="mx-auto w-full">
               <Routes>
                 <Route path="/dashboard" element={<Home />} />
                 <Route path="/sagarai" element={<SagarAiPage />} />
-                <Route path="/analysis" element={<div>Analysis Page</div>} />
+                
+                <Route 
+                path="/analysis" 
+                element={<Analysis activeAnalysisId={activeAnalysisId}/>} 
+                />
 
                 <Route
                   path="/visualization"
