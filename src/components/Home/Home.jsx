@@ -226,11 +226,11 @@ const Home = () => {
   return (
     <div className="space-y-10 w-full mx-auto p-4 bg-gray-100 min-h-screen">
       {/* ===== Platform Header ===== */}
-      <header className="w-full">
-        <h1 className="text-3xl xl:text-4xl font-semibold text-[#007bff] mb-3">
+      <header className="w-full flex flex-center flex-col text-center mb-6">
+        <h1 className="text-3xl xl:text-4xl  font-sans  font-bold text-[#4c9bf0] mb-3">
           AI Oceanographic Data Platform
         </h1>
-        <p className="text-gray-700 text-base xl:text-lg leading-relaxed">
+        <p className="text-gray-700 text-base xl:text-lg font-sans leading-relaxed">
           Ask natural language questions to analyze marine ecosystems, track biodiversity changes, and explore conservation insights.
         </p>
       </header>
