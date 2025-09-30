@@ -25,7 +25,7 @@ const TopBar = () => {
                 <div className={styles.iconWrapper}>
                     <LuWaves className={styles.icon} />
                 </div>
-                <span className={styles.name}>TextTwistker</span>
+                <span className={styles.name}>DeepSea Drive</span>
             </div>
             
             <div className={styles.align}>

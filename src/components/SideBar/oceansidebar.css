@@ -23,7 +23,7 @@
 .section-title {
   font-size: 19px;
   font-weight: 700;
-  color: #3e99e9;
+  color: #2a7a9d;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -65,7 +65,7 @@
 .ocean-sidebar li button.active {
   background: #f0f9ff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  border-left: 4px solid #3e99e9;
+  border-left: 4px solid #2a7a9d;
   padding-left: 10px; 
 }
 
@@ -95,14 +95,14 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: #118d80;
+  background: #11708d;
   color: white;
   font-size: 18px;
 }
 
 
 .ocean-sidebar li button.active .icon-box {
-  background: #118d80; 
+  background: #0d5469; 
 }
 
 /*scrollbar*/

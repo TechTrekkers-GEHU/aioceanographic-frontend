@@ -12,7 +12,7 @@ export const Footer = () => {
           Contacts
         </a>
       </div>
-      <div className="text-xs mt-1">2025 Tech Trekkers</div>
+      <div className="text-xs mt-1">2025 DeepSea Drive</div>
     </div>
   )
 }

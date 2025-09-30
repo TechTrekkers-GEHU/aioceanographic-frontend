@@ -14,12 +14,12 @@ const LandingPage = () => {
                     <header className="landing-header">
                         <div className="logo">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-icon"><path d="M4 8L4 6C4 4.89543 4.89543 4 6 4L18 4C19.1046 4 20 4.89543 20 6V8" stroke="white" strokeWidth="2" strokeLinecap="round" /><path d="M4 16L4 18C4 19.1046 4.89543 20 6 20H18C19.1046 20 20 19.1046 20 18V16" stroke="white" strokeWidth="2" strokeLinecap="round" /><path d="M4 12H20" stroke="white" strokeWidth="2" strokeLinecap="round" /></svg>
-                            <span>TechTrekker</span>
+                            <span>DeepSea Drive</span>
                         </div>
                     </header>
                     <div className="hero-content">
                         <div className="hero-text">
-                            <h1>SagarAI : India's Unified<br /> Marine Intelligence Platform</h1>
+                            <h1>DeepSea Drive : India's Unified<br /> Marine Intelligence Platform</h1>
                             <p>Transforming and predicting integrated chemical and eDNA data for predictive, sustainable ocean management</p>
                             <div className="hero-buttons">
                                 <Link to="/dashboard" className="btn btn-primary">GO TO CONSOLE</Link>
