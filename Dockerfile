@@ -1,5 +1,8 @@
 # Use Node.js-Debian base image
-FROM node:22
+FROM node:22-trixie
+
+# Update base Distributin packages
+RUN apt-get update && apt-get install -y
 
 WORKDIR /app
 
