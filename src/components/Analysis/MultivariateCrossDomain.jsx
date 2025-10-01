@@ -74,7 +74,7 @@ const MultivariateCrossDomain = () => {
 
     const endpoint = analysisType.toLowerCase();
     const serverKey = visualizationKeyMap[analysisType][visualizationType];
-    const url = `http://localhost:8010/${endpoint}?visualizationType=${encodeURIComponent(serverKey)}`;
+    const url = `http://34.4.27.115:8010/${endpoint}?visualizationType=${encodeURIComponent(serverKey)}`;
 
     try {
       setLoading(true);

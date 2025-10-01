@@ -7,7 +7,7 @@ import { TbProgressX } from 'react-icons/tb';
 
 
 // Connection Fields for SagarAI Services 
-const URI = "ws://localhost:8000";
+const URI = "ws://34.4.27.115:8000";
 const endPoint = "/sagarAI";
 
 
@@ -128,11 +128,6 @@ const SagarAiPage = () => {
     // Create a Empty System Message for upcomming response from server for this query
     const responseMessage = { id: crypto.randomUUID(), role: "system", content: ""};
     setMessages((prev) => [...prev, responseMessage]);
-
-    // Streaming tokens
-    if (autoScroll && !userScrolledUp){
-      queueMicrotask(() => scrollToBottom("auto"));
-    }
 
     // On response completion
     if (autoScroll && !userScrolledUp){

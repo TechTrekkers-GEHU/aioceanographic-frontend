@@ -29,12 +29,12 @@ export default function ChatMessage({ role, content}) {
     <div className={cn("w-full flex mb-8", isUser ? "justify-end" : "justify-start")}>
       <>
         {!isUser && message.messageStatus === 'done' ? (
-          <img src= {sagarAIDone} className="w-[45px] h-[45px] object-contain" />
+          <img src= {sagarAIDone} className="w-[60px] h-[60px] object-contain" />
         ) : !isUser && message.messageStatus === 'intreputed' ? (
-          <img src= {sagarAIIntreputed} className="w-[45px] h-[45px] object-contain" />
+          <img src= {sagarAIIntreputed} className="w-[60px] h-[60px] object-contain" />
         ) : !isUser ?(
           <Lottie loop animationData={sagarAIWorking} 
-          play style={{ width: 60, height: 60,objectFit: "cover",overflow: "hidden", transform: "scale(1.5)",
+          play style={{ width: 80, height: 80,objectFit: "cover",overflow: "hidden", transform: "scale(1.5)",
                         transformOrigin: "center", clipPath: "inset(10% 10% 10% 10%)" }}
           />
         ):(<></>)}
