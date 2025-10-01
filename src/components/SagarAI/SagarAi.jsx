@@ -148,7 +148,7 @@ const SagarAiPage = () => {
         chats[lastIndex] = {
         ...chats[lastIndex],
         content: chats[lastIndex].content + "\n\n [Prompt Terminated By User]",
-        messageStatus: "intreputed",
+        messageStatus: "interrupted",
         };
       }
       return chats;
