@@ -7,7 +7,7 @@ import { TbProgressX } from 'react-icons/tb';
 
 
 // Connection Fields for SagarAI Services 
-const URI = "ws://34.4.27.115:8000";
+const URI = "wss://vineetrawat.me";
 const endPoint = "/sagarAI";
 
 
