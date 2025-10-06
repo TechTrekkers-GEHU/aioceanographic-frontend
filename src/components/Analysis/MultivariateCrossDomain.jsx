@@ -72,9 +72,9 @@ const MultivariateCrossDomain = () => {
     formData.append("file1", new Blob([Papa.unparse(cleanedA)], { type: "text/csv" }), "datasetA.csv");
     formData.append("file2", new Blob([Papa.unparse(cleanedB)], { type: "text/csv" }), "datasetB.csv");
 
-    const endpoint = analysisType.toLowerCase();
+    const endpoint = analysisType.toLowerCase() + "/";
     const serverKey = visualizationKeyMap[analysisType][visualizationType];
-    const url = `http://34.4.27.115:8010/${endpoint}?visualizationType=${encodeURIComponent(serverKey)}`;
+    const url = `https://vineetrawat.me/multivariate/${endpoint}?visualizationType=${encodeURIComponent(serverKey)}`;
 
     try {
       setLoading(true);
