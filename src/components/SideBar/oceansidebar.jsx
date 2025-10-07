@@ -47,6 +47,38 @@ const OceanSidebar = ({ activeItem, onSelect }) => {
           </ul>
         </div>
 
+        {/* Spatial Analysis */}
+        <div className="section">
+          <h3 className="section-title">
+            <FaMapMarkedAlt /> Spatial Analysis
+          </h3>
+          <ul>
+            <li>
+              <button
+                className={activeItem === 'hotspots' ? 'active' : ''}
+                onClick={() => onSelect('hotspots')}
+              >
+                <div className="item-title">
+                  <span className="icon-box"><TbMapPin /></span>
+                  Biodiversity Hotspots
+                </div>
+                <div className="item-description">Conservation priority areas</div>
+              </button>
+            </li>
+            <li>
+              <button
+                className={activeItem === 'distribution' ? 'active' : ''}
+                onClick={() => onSelect('distribution')}
+              >
+                <div className="item-title">
+                  <span className="icon-box"><FaGlobe /></span>
+                  Species Distribution
+                </div>
+                <div className="item-description">Geospatial mapping</div>
+              </button>
+            </li>
+          </ul>
+        </div>
         {/* Species Analysis */}
         <div className="section">
           <h3 className="section-title">
@@ -108,38 +140,6 @@ const OceanSidebar = ({ activeItem, onSelect }) => {
                   Genetic Markers
                 </div>
                 <div className="item-description">Population genetics</div>
-              </button>
-            </li>
-          </ul>
-        </div>
-        {/* Spatial Analysis */}
-        <div className="section">
-          <h3 className="section-title">
-            <FaMapMarkedAlt /> Spatial Analysis
-          </h3>
-          <ul>
-            <li>
-              <button
-                className={activeItem === 'distribution' ? 'active' : ''}
-                onClick={() => onSelect('distribution')}
-              >
-                <div className="item-title">
-                  <span className="icon-box"><FaGlobe /></span>
-                  Species Distribution
-                </div>
-                <div className="item-description">Geospatial mapping</div>
-              </button>
-            </li>
-            <li>
-              <button
-                className={activeItem === 'hotspots' ? 'active' : ''}
-                onClick={() => onSelect('hotspots')}
-              >
-                <div className="item-title">
-                  <span className="icon-box"><TbMapPin /></span>
-                  Biodiversity Hotspots
-                </div>
-                <div className="item-description">Conservation priority areas</div>
               </button>
             </li>
           </ul>
