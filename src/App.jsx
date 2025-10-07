@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-
+import { Analytics } from "@vercel/analytics/react";
 import Sidebar from "./components/SideBar/sidebar";
 import OceanSidebar from "./components/SideBar/oceansidebar"; 
 import TopBar from "./components/TopBar/TopBar";
@@ -87,6 +87,7 @@ const AppShell = () => {
 const App = () => {
   return (
     <Router>
+      <Analytics />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/*" element={<AppShell />} />
